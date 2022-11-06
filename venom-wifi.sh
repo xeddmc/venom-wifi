@@ -8,12 +8,12 @@ MAGENTABG="$(printf '\033[45m')"  CYANBG="$(printf '\033[46m')"  WHITEBG="$(prin
 RESETBG="$(printf '\e[0m\n')" END="$(printf '\033[0m\e[0m')"
 
 if [ $(id -u) -ne "0" ];then
-    echo -e "\n[!]${RED} Ejecute este script como root...${END}"
+    echo -e "\n[!]${RED} Run this script as root...${END}"
     exit 1
 fi 
 
 function ctrl_c(){
-    echo -e "${RED}\n[!] Saliendo...${END}"
+    echo -e "${RED}\n[!] Exporting...${END}"
 	move_file
 	rm $cap_name.txt &>/dev/null
     mon=$(networkctl 2>/dev/null |  awk '{print $(NF-3)}' 2>/dev/null)
@@ -27,7 +27,7 @@ function ctrl_c(){
 trap ctrl_c INT
 
 function reverse(){
-    echo -e "${WHITE}\n[+] ${GREEN}Regresando todo a la normalidad...${END}"
+    echo -e "${WHITE}\n[+] ${GREEN}Reverting everything back to normal...${END}"
     service NetworkManager start
     service wpa_supplicant start
     lan=$(networkctl 2>/dev/null | grep "mon" | awk '{print $(NF-3)}')
@@ -50,7 +50,7 @@ ${CYAN}██║   ██║█████╗  ██╔██╗ ██║█�
 ${CYAN}╚██╗ ██╔╝██╔══╝  ██║╚██╗██║██║   ██║██║╚██╔╝██║╚════╝██║███╗██║██║██╔══╝  ██║
 ${CYAN} ╚████╔╝ ███████╗██║ ╚████║╚██████╔╝██║ ╚═╝ ██║      ╚███╔███╔╝██║██║     ██║
 ${CYAN}  ╚═══╝  ╚══════╝╚═╝  ╚═══╝ ╚═════╝ ╚═╝     ╚═╝       ╚══╝╚══╝ ╚═╝╚═╝     ╚═╝
-${MAGENTA}                            By: Alcatraz2033${END}                                                      ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+${MAGENTA}                            By: Alcatraz2033, Translated by xeddmc${END}                                                      ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 	EOF
 }
 
@@ -78,26 +78,26 @@ function cheker(){
 
 	which aircrack-ng &>/dev/null
 	if [ $? -ne "0" ];then
-		echo -e "\n[+]${CYAN} Instalando aircrack-ng...${END}"
+		echo -e "\n[+]${CYAN} Installing aircrack-ng...${END}"
 		sudo apt install aircrack-ng -y &>/dev/null
 	fi
 	which xterm &>/dev/null
 	if [ $? -ne "0" ];then
-		echo -e "\n[+]${CYAN} Instalando xterm...${END}"
+		echo -e "\n[+]${CYAN} Installing xterm...${END}"
 		sudo apt install xterm -y &>/dev/null
 	fi 
 	which john &>/dev/null
 	if [ $? -ne "0" ];then
-		echo -e "\n[+]${CYAN} Instalando john...${END}"
+		echo -e "\n[+]${CYAN} Installing john...${END}"
 		sudo apt install john -y &>/dev/null
 	fi
 	which git &>/dev/null
 	if [ $? -ne "0" ];then
-		echo -e "\n[+]${CYAN} Instalando git...${END}"
+		echo -e "\n[+]${CYAN} Installing git...${END}"
 		sudo apt install git -y &>/dev/null
 	fi
 	if [ ! -d "SecLists" ];then
-		echo -e "\n[+]${CYAN} Descargando SecLists, esto puede demorar un poco...${END}"
+		echo -e "\n[+]${CYAN} Downloading SecLists, please wait...${END}"
 		git clone https://github.com/danielmiessler/SecLists.git 
 	fi 
 	clear
@@ -123,24 +123,24 @@ function hand_checker(){
 	done
 }
 
-# EN PROCESO...
+# Processing...
 # dictionary_crack(){
 	# aircrack-ng "capturas/$red_name.cap" -J "capturas/$red_name" &>/dev/null
 	# hccap2john "capturas/$red_name.hccap" > "capturas/$red_name.txt"
 	# rm capturas/*.hccap
-	# echo "${WHITE}[+] ${GREEN}Ataque por diccionario:${WHITE}"
+	# echo "${WHITE}[+] ${GREEN}Dictionary attack:${WHITE}"
 # 
-	# select k in 'Utilizar diccionario automatico' 'Utilizar diciconario propio';do
-		# if [[ $k == 'Utilizar diccionario automatico' ]];then
+	# select k in 'Use Automatic Dictionary' 'Use Your Own Dictionary';do
+		# if [[ $k == 'Use Automatic Dictionary' ]];then
 			# for elemento in $(ls SecLists/Passwords/WiFi-WPA/);do
 				# john --wordlist=SecLists/Passwords/WiFi-WPA/$elemento "capturas/$red_name.txt"
 			# done
 		# fi
-		# if [[ $k == 'Utilizar diciconario propio' ]];then
+		# if [[ $k == 'Use Your Own Dictionary' ]];then
 			# read -r -p "Ruta del diccionario: " diccionario
 			# john --wordlist=$diccionario "capturas/$red_name.txt"
 		# else
-			# echo -e "\n[+]${CYAN} Opcion incorrecta${END}"
+			# echo -e "\n[+]${CYAN} Invalid Option${END}"
 		# fi
 	# done
 # }
