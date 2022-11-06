@@ -1,82 +1,75 @@
-## Bienvenido a Venom-Wifi
+## Venom-Wifi
 
-<h3><p align="center">Advertencia</p></h3>
+<h3><p align="center">DISCLAIMER</p></h3>
 
-Cualquier acción o actividad relacionada con Venom-Wifi es de su exclusiva responsabilidad. El uso indebido de este conjunto de herramientas puede dar lugar a cargos penales contra las personas en cuestión. Los contribuyentes no serán responsables en caso de que se presenten cargos penales contra cualquier persona que haga un uso indebido de este conjunto de herramientas para infringir la ley.
+Any action tor activity related to this tool is <b>your</b> sole responsibility. Misuse & abuse of this toolkit may result in criminal charges against the individuals in question. Contributors shall not be liable for your actions.
 
-Este conjunto de herramientas contiene materiales que pueden ser potencialmente dañinos o peligrosos para las redes wifi. Consulte las leyes de su provincia/país antes de acceder, usar o de cualquier otra forma utilizar esto de manera incorrecta.
 
-Esta herramienta está hecha solo con fines educativos. No intente violar la ley con nada de lo contenido aquí. Si esta es tu intención, entonces ¡Vete de aquí!
-
-Solo demuestra "cómo funciona el pentesteo de redes wifi". No debe hacer un mal uso de la información para obtener acceso no autorizado a las redes wifi de otra persona. Sin embargo, puede probar esto bajo su propio riesgo.
+This tool is for educational purposes only. Do everyone a favor & don't be an a***ole. The world has enough of them already.
 
 ##
 
-Este es un script que automatiza la obtención del wpa handshake.  Cuando un usuario se conecta a una red wifi ocurre lo que se conoce como 4-way
-handshake, este proceso transmite 4 mensajes para poder confirmar que ambos el usuario y el router tienen las credenciales correctas para empezar 
-la comunicación (tu conexión a internet). Este con el handshake obtenido se puede crakear la contraseña mediante fuerza bruta. Además este script
-tiene la función para tumbar una red wifi por completo sin necesidad de autenticación "Muy útil si lo que quieres es jugar una pequeña broma" pero
-recuerda que si tumbas la red por mas de 5 horas, podrias dañar el router al que estas atacando. 
+This is a script that automates obtaining the WPA handshake.  When a user connects to a wifi network, a 4-way handshake occurs.
+This process transmits 4 messages in order to confirm that both the user and the router both have the correct credentials to start the communication (using the internet). 
+This handshake can be used to crack the password by brute force. In addition, this script has the ability to knock down a wifi network with a Denial of Service attack, DoS. 
 ##
 
-## Recomendación
+## Recommendation
 
-Antes de iniciar se recomienda para esta clase de ataques a redes wifi, obtener una antena wifi rompemuros. La más popular en el mundo del pentesting es 
-la antena de marca ALFA o antenas con un chipset Ralink.
+Before starting, it is recommended you obtain a wall-penetrating wifi antenna. A popular one in the world of pentesting is ALPHA brand antennae or antennae with a Ralink chipset.
 
 <p align="left">
 	<img src="https://i.imgur.com/wE0eG8t.jpg" width="30%" height="30%">
 </p>
 
-### Instalación
+### Installation
 
-Clonar el repositorio y cambiar los permisos
+Clone the repository and change the permissions.
 
 ```markdown
-git clone https://github.com/Alcatraz2033/venom-wifi.git
+git clone https://github.com/xeddmc/venom-wifi.git
 cd venom-wifi
 chmod +x venom-wifi.sh
 sudo ./venom-wifi.sh
 ```
 
-## Inicio
+## Start
 
-Selecciona la opcion que prefieras, puedes elejir entre atacar directamente la red o crackear la contraseña por fuerza bruta con ataque por diccionario. (Muy pronto se añadira el ataque Evil Twin)
+Select the option you prefer, you can choose between attacking the network directly or cracking the password by brute force using a dictionary attack.
 
 <p align="left">
-	<img src="https://i.imgur.com/PB6TxQ7.png" width="60%" height="60%" align="">
+	<img src="https://i.imgur.com/PB6TxQ7.png" width="60%" height="60%" height="60%" align="">
 </p>
 
-## Obterner Handshake
+## Obtain Handshake
 
-Al iniciar se abrira una terminal de xterm y mostrará gradualmente las redes wifi disponibles, una vez veas la red que vas a atacar, da clic sobre la
-terminal xterm y luego preciona ctrl + C. La detección de red finalizará y podras cerrar la terminal dando clic en el botón cerrar "X".
-Despues aparecerá el listado de redes disponibles, selecionas la que gustes y empieza el ataque.
+On startup, a terminal window will open and gradually display the available wifi networks. Once you find a target, press Ctrl + C and close the window.
+The list of available networks will appear, select the one you want and start the attack.
 
 <p align="center">
-	<img src="https://i.imgur.com/xPt2Psi.png" width="100%" height="100%" align="">
+	<img src="https://i.imgur.com/xPt2Psi.png" width="100%" height="100%" height="100%" align="">
 </p>
 
-## Resultado Final
+## Results
 
-Una vez obtenido el handshake, el programa automaticamente se serrará y guardará el archivo.cap en la carpeta capturas con el nombre de la red comprometida.
+Once the handshake is obtained, the program will automatically detect and save the .cap file in the 'captures' folder with the filename of the compromised network.
 <p align="center">
-	<img src="https://i.imgur.com/4xLFWjz.png" width="100%" height="100%" align="">
+	<img src="https://i.imgur.com/4xLFWjz.png" width="100%" height="100%" height="100%" align="">
 </p>
 
-## Crackeo de Contraseña
+## Password cracking
 
-Crackeo de contraseña por fuerza bruta con ataque de diccionario, escoje entre el diccionario por defecto o selecciona tu porpio diccioanrio de contraseñas.
+Choose from the default dictionary or select your own password dictionary to crack the password with brute-force.
 <p align="center">
-	<img src="https://i.imgur.com/HEQAWxi.png" width="100%" height="100%" align="">
+	<img src="https://i.imgur.com/HEQAWxi.png" width="100%" height="100%" height="100%" align="">
 </p>
 
-## Tumbar la Red
+## DoS
 
-Sigues los mismos pasos de la parte anterior pero cambias a la opcion de "Tumbar la red", automáticamente comenzará el ataque Dos a la red wifi seleccionada.
-Para detener el ataque preciona ctrl + C en la terminal principal.
+Follow the same steps as in the last section, but switch to the "Knock down the network" option, it will automatically start the Dos attack on the selected wifi network.
+To stop the attack press ctrl + C.
 
 
 <p align="center">
-	<img src="https://i.imgur.com/dStEmWc.png" width="100%" height="100%" align="">
+	<img src="https://i.imgur.com/dStEmWc.png" width="100%" height="100%" height="100%" align="">
 </p>
